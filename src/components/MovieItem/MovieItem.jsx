@@ -29,6 +29,7 @@ function MovieItem ({movie}) {
             sx={{ height: 300 }}
             image={movie.poster}
             title={movie.title}
+            onClick={movieToView}
             data-testid="toDetails"
           />
           <CardContent>

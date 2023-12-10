@@ -89,4 +89,19 @@ router.post('/', (req, res) => {
     })
 })
 
+
+router.put('/:id', (req, res) => {
+  console.log("req.body is this: ", req.body)
+  console.log("req.params.id is this: ", req.params.id)
+
+  const queryText = `
+    UPDATE "movies"
+    SET ("title", "poster", "description") = ($1, $2, $3)
+      WHERE "id" = $4 
+  `
+  const queryValues = [req.body.title, req.body.poster, req.body.description, req.params.id];
+  pool.query(queryText, queryValues)
+    .then((result) => {res.sendStatus(200)})
+});
+
 module.exports = router;

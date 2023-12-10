@@ -31,13 +31,15 @@ function MovieDetails () {
     const backToList = () => {
         history.push(`/`)
     }
-    
+    const editMovie = () => {
+        history.push(`/editMovie/${id}`)
+    }
     return(
         <div>
             <Button 
             size="small" 
-            onClick={backToList}
-            >Back to movie list</Button>
+            onClick={editMovie}
+            >Edit Movie</Button>
             <br />
             <img src={movieToDisplay.poster}></img>
             <h2>{movieToDisplay.title}</h2>

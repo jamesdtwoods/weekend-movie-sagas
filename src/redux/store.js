@@ -10,6 +10,7 @@ function* rootSaga() {
   yield takeEvery('SAGA/FETCH_GENRES', fetchAllGenres)
   yield takeEvery('SAGA/FETCH_MOVIE_GENRE_OF_MOVIE_TO_VIEW', fetchMovieGenreOfMovieToView)
   yield takeEvery('SAGA/CREATE_MOVIE', createMovie)
+  yield takeEvery('SAGA/EDIT_MOVIE', editMovie)
 }
 
 function* fetchAllMovies() {
@@ -65,6 +66,22 @@ function* createMovie(action) {
     const response = yield axios ({
       method: 'POST',
       url: `/api/movies`,
+      data: action.payload
+  })
+    // get all the movies
+    yield fetchAllMovies();
+  } catch (error) {
+    console.log('create movie error:', error);
+  }
+}
+
+function* editMovie(action) {
+  console.log('action.payload:', action.payload);
+  try {
+    // Post the movie:
+    const response = yield axios ({
+      method: 'PUT',
+      url: `/api/movies/${action.payload.id}`,
       data: action.payload
   })
     // get all the movies
