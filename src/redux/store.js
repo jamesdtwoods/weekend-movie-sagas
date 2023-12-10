@@ -7,7 +7,9 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery('SAGA/FETCH_MOVIES', fetchAllMovies)
-  yield takeEvery('SAGA/FETCH_MOVIE_GENRES', fetchMovieGenres)
+  yield takeEvery('SAGA/FETCH_GENRES', fetchAllGenres)
+  yield takeEvery('SAGA/FETCH_MOVIE_GENRE_OF_MOVIE_TO_VIEW', fetchMovieGenreOfMovieToView)
+  yield takeEvery('SAGA/CREATE_MOVIE', createMovie)
 }
 
 function* fetchAllMovies() {
@@ -24,7 +26,21 @@ function* fetchAllMovies() {
   }
 }
 
-function* fetchMovieGenres(action) {
+function* fetchAllGenres() {
+  try {
+    // Get the genres:
+    const genresResponse = yield axios.get('/api/genres');
+    // Set the value of the movies reducer:
+    yield put({
+      type: 'SET_GENRES',
+      payload: genresResponse.data
+    });
+  } catch (error) {
+    console.log('fetchAllGenres error:', error);
+  }
+}
+
+function* fetchMovieGenreOfMovieToView(action) {
   console.log('action', action);
   try {
     // Get the movie genres:
@@ -34,11 +50,27 @@ function* fetchMovieGenres(action) {
   })
     // Set the value of the movie genre reducer:
     yield put({
-      type: 'SET_GENRES',
+      type: 'SET_GENRE_OF_MOVIE',
       payload: moviesResponse.data
     });
   } catch (error) {
     console.log('fetchMovieGenres error:', error);
+  }
+}
+
+function* createMovie(action) {
+  console.log('action.payload:', action.payload);
+  try {
+    // Post the movie:
+    const response = yield axios ({
+      method: 'POST',
+      url: `/api/movies`,
+      data: action.payload
+  })
+    // get all the movies
+    yield fetchAllMovies();
+  } catch (error) {
+    console.log('create movie error:', error);
   }
 }
 
@@ -65,9 +97,18 @@ const movieToView = (state = 0, action) => {
   }
 }
 
+// Used to store the movie to view genre
+const genreOfMovieToView = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_GENRE_OF_MOVIE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
-  console.log('genres reducer action:', action);
   switch (action.type) {
     case 'SET_GENRES':
       return action.payload;
@@ -80,8 +121,9 @@ const genres = (state = [], action) => {
 const storeInstance = createStore(
   combineReducers({
     movies,
-    movieToView,
     genres,
+    movieToView,
+    genreOfMovieToView,
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger),
