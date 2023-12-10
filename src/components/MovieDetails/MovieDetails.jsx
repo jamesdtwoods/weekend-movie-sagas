@@ -35,10 +35,7 @@ function MovieDetails () {
     }
     return(
         <div data-testid="movieDetails">
-            <Button 
-            size="small" 
-            onClick={editMovie}
-            >Edit Movie</Button>
+            <Button size="small" onClick={editMovie}>Edit Movie</Button>
             <br />
             <img src={movieToDisplay.poster}></img>
             <h2>{movieToDisplay.title}</h2>
