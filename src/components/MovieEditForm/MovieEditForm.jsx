@@ -23,6 +23,7 @@ function MovieEditForm () {
         }
         return movieToDisplay;
     }
+    
     const [titleInput, setTitleInput] = useState(movieToDisplay.title);
     const [posterInput, setPosterInput] = useState(movieToDisplay.poster);
     const [descriptionInput, setDescriptionInput] = useState(movieToDisplay.description);
@@ -43,7 +44,6 @@ function MovieEditForm () {
     const handleCancel = () => {
         history.push("/")
     }
-
 
     return(
         <div>
@@ -72,14 +72,8 @@ function MovieEditForm () {
                 cols="50"
             >{descriptionInput}</textarea>
             <br /><br />
-            <Button 
-            size="small" 
-            onClick={handleSubmit}
-            >Submit</Button>
-            <Button 
-            size="small" 
-            onClick={handleCancel}
-            >Cancel</Button>
+            <Button size="small" onClick={handleSubmit}>Submit</Button>
+            <Button size="small" onClick={handleCancel}>Cancel</Button>
         </div>
     )
 }

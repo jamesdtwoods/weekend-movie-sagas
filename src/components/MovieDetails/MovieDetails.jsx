@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-
 function MovieDetails () {
     const movies = useSelector(store => store.movies);
     const dispatch = useDispatch();
@@ -50,10 +49,7 @@ function MovieDetails () {
                     return <p key={index}>{genre.genre}</p>
                 })}
             </>
-            <Button 
-            size="small" 
-            onClick={backToList}
-            >Back to movie list</Button>
+            <Button size="small" onClick={backToList}>Back to movie list</Button>
         </div>
     )
 }

@@ -27,7 +27,7 @@ function MovieList() {
       <Button size="small" onClick={toAddMovie} >Add Movie</Button>
       <br />
       <section className="movies">
-      <Grid container spacing={2}>
+      <Grid container justifyContent="center" spacing={2}>
           {movies.map(movie => {
             return (
               <div data-testid='movieItem' key={movie.id}>
@@ -38,12 +38,6 @@ function MovieList() {
         </Grid>
       </section>
     </main>
-
-    
-
-
-
-
   );
 }
 

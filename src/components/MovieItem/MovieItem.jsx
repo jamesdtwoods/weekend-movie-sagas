@@ -9,7 +9,6 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-
 function MovieItem ({movie}) {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -38,10 +37,7 @@ function MovieItem ({movie}) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button 
-            size="small" 
-            onClick={movieToView}
-            >Learn More</Button>
+            <Button size="small" onClick={movieToView}>Learn More</Button>
           </CardActions>
         </Card>
       </Grid>

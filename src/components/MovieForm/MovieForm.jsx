@@ -10,9 +10,8 @@ function MovieForm () {
     const [titleInput, setTitleInput] = useState('');
     const [posterInput, setPosterInput] = useState('');
     const [descriptionInput, setDescriptionInput] = useState('');
-    let selectedGenre;
 
-// need to get genres 
+    let selectedGenre;
 
     useEffect(() => {
         dispatch({ 
@@ -37,7 +36,6 @@ function MovieForm () {
         history.push("/")
     }
 
-    // for genres
     const setGenre = (value) => {
         selectedGenre = value;
         return selectedGenre;
@@ -80,14 +78,8 @@ function MovieForm () {
                 })}
             </select>
             <br /><br />
-            <Button 
-            size="small" 
-            onClick={handleSubmit}
-            >Submit</Button>
-            <Button 
-            size="small" 
-            onClick={handleCancel}
-            >Cancel</Button>
+            <Button size="small" onClick={handleSubmit}>Submit</Button>
+            <Button size="small" onClick={handleCancel}>Cancel</Button>
         </div>
     )
 }

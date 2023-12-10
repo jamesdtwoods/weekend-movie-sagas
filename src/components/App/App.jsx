@@ -9,7 +9,6 @@ import MovieDetails from '../MovieDetails/MovieDetails';
 import MovieForm from '../MovieForm/MovieForm';
 import MovieEditForm from '../MovieEditForm/MovieEditForm';
 
-
 function App() {
   return (
     <div className="App">
@@ -18,19 +17,15 @@ function App() {
         <Route path="/" exact>
           <MovieList />
         </Route>
-        
         <Route path="/movieDetails/:id" exact>
           <MovieDetails />
         </Route>
-
         <Route path="/addMovie" exact>
           <MovieForm />
         </Route>
-
         <Route path="/editMovie/:id" exact>
           <MovieEditForm />
         </Route>
-        
       </Router>
     </div>
   );
