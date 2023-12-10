@@ -70,7 +70,7 @@ function MovieEditForm () {
                 placeholder='Description'
                 rows="4"
                 cols="50"
-            />
+            >{descriptionInput}</textarea>
             <br /><br />
             <Button 
             size="small" 
