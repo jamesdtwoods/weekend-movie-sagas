@@ -13,12 +13,12 @@ function MovieDetails () {
     movie();
     useEffect(() => {
         dispatch({ 
-          type: 'SAGA/FETCH_MOVIE_GENRES',
+          type: 'SAGA/FETCH_MOVIE_GENRE_OF_MOVIE_TO_VIEW',
           payload: movieIdToView
         });
       }, []);
 
-    const genres = useSelector(store => store.genres);
+    const genres = useSelector(store => store.genreOfMovieToView);
 
     function movie() {
         for (let i=0; i < movies.length; i++) {

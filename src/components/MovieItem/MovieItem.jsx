@@ -25,7 +25,7 @@ function MovieItem ({movie}) {
 
     return (
       <Grid>
-        <Card sx={{ minWidth: 200, maxWidth: 200, minHeight: 500, maxHeigh: 500 }}>
+        <Card sx={{ minWidth: 200, maxWidth: 200, minHeight: 450, maxHeigh: 450 }}>
           <CardMedia
             sx={{ height: 300 }}
             image={movie.poster}
