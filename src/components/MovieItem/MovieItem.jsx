@@ -11,16 +11,15 @@ import { useDispatch } from 'react-redux';
 
 
 function MovieItem ({movie}) {
-    const dispatch = useDispatch();
-
+    const dispatch = useDispatch()
     const history = useHistory()
+
     const movieToView = () => {
-        console.log('movie.id:', movie.id)
         dispatch({
-            type: 'SET_MOVIE_TO_VIEW',
+            type: 'SAGA/FETCH_MOVIE_GENRE_OF_MOVIE_TO_VIEW',
             payload: movie.id
         })
-        history.push(`/movieDetails/`)
+        history.push(`/movieDetails/${movie.id}`)
     }
 
     return (
