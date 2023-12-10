@@ -34,7 +34,7 @@ function MovieDetails () {
         history.push(`/editMovie/${id}`)
     }
     return(
-        <div>
+        <div data-testid="movieDetails">
             <Button 
             size="small" 
             onClick={editMovie}
@@ -49,7 +49,7 @@ function MovieDetails () {
                     return <p key={index}>{genre.genre}</p>
                 })}
             </>
-            <Button size="small" onClick={backToList}>Back to movie list</Button>
+            <Button size="small" data-testid="toList" onClick={backToList}>Back to movie list</Button>
         </div>
     )
 }

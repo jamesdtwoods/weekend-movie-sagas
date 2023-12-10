@@ -29,7 +29,6 @@ function MovieItem ({movie}) {
             image={movie.poster}
             title={movie.title}
             onClick={movieToView}
-            data-testid="toDetails"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
@@ -37,7 +36,7 @@ function MovieItem ({movie}) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" onClick={movieToView}>Learn More</Button>
+            <Button size="small" data-testid="toDetails" onClick={movieToView}>Learn More</Button>
           </CardActions>
         </Card>
       </Grid>
