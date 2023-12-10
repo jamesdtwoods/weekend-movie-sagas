@@ -7,6 +7,7 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery('SAGA/FETCH_MOVIES', fetchAllMovies)
+  yield takeEvery('SAGA/FETCH_GENRES', fetchAllGenres)
   yield takeEvery('SAGA/FETCH_MOVIE_GENRE_OF_MOVIE_TO_VIEW', fetchMovieGenreOfMovieToView)
   yield takeEvery('SAGA/CREATE_MOVIE', createMovie)
 }
@@ -22,6 +23,20 @@ function* fetchAllMovies() {
     });
   } catch (error) {
     console.log('fetchAllMovies error:', error);
+  }
+}
+
+function* fetchAllGenres() {
+  try {
+    // Get the genres:
+    const genresResponse = yield axios.get('/api/genres');
+    // Set the value of the movies reducer:
+    yield put({
+      type: 'SET_GENRES',
+      payload: genresResponse.data
+    });
+  } catch (error) {
+    console.log('fetchAllGenres error:', error);
   }
 }
 
@@ -82,10 +97,20 @@ const movieToView = (state = 0, action) => {
   }
 }
 
-// Used to store the movie genres
+// Used to store the movie to view genre
 const genreOfMovieToView = (state = [], action) => {
   switch (action.type) {
     case 'SET_GENRE_OF_MOVIE':
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+// Used to store the movie genres
+const genres = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_GENRES':
       return action.payload;
     default:
       return state;
@@ -96,6 +121,7 @@ const genreOfMovieToView = (state = [], action) => {
 const storeInstance = createStore(
   combineReducers({
     movies,
+    genres,
     movieToView,
     genreOfMovieToView,
   }),

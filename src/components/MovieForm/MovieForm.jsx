@@ -6,14 +6,19 @@ import Button from '@mui/material/Button';
 function MovieForm () {
     const dispatch = useDispatch()
     const history = useHistory()
+    const genres = useSelector(store => store.genres);
     const [titleInput, setTitleInput] = useState('');
     const [posterInput, setPosterInput] = useState('');
     const [descriptionInput, setDescriptionInput] = useState('');
-    const [genre, setGenre] = useState('');
+    let selectedGenre;
 
 // need to get genres 
 
-
+    useEffect(() => {
+        dispatch({ 
+        type: 'SAGA/FETCH_GENRES'
+        });
+    }, []);
 
     const handleSubmit = () => {
         dispatch({
@@ -21,7 +26,8 @@ function MovieForm () {
             payload: { 
                 title: titleInput, 
                 poster: posterInput, 
-                description: descriptionInput 
+                description: descriptionInput,
+                genre_id: selectedGenre
             }
         })
         history.push("/")
@@ -32,17 +38,10 @@ function MovieForm () {
     }
 
     // for genres
-    // const handleInputChange = (value) => {
-    //     console.log('category: ', value);
-
-    //     dispatch({
-    //         type: 'SAGA/SET_CATEGORY',
-    //         payload: {
-    //             data: value,
-    //             id: favoriteGif.id
-    //         }
-    //     })
-    // }
+    const setGenre = (value) => {
+        selectedGenre = value;
+        return selectedGenre;
+    }
 
     return(
         <div>
@@ -66,16 +65,13 @@ function MovieForm () {
             />
             <br />
 
-            {/* <select name="category"
-                        onChange={(e) => handleInputChange(e.target.value)}
-                        defaultValue={Number(favoriteGif.category_id)}>
-                <option value=""></option>
-                <option value="1">wild</option>
-                <option value="2">uproarious</option>
-                <option value="3">poignant</option>
-                <option value="4">felicitous</option>
-                <option value="5">whimsical</option>
-            </select> */}
+            <select name="genre"
+                onChange={(e) => setGenre(e.target.value)}
+                defaultValue=''>
+                {genres.map(genre => {
+                    return <option key={genre.id} value={genre.id}>{genre.name}</option>
+                })}
+            </select>
             
             <Button 
             size="small" 
