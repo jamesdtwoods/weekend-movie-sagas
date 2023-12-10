@@ -7,6 +7,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import MovieForm from '../MovieForm/MovieForm';
+import MovieEditForm from '../MovieEditForm/MovieEditForm';
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
 
         <Route path="/addMovie" exact>
           <MovieForm />
+        </Route>
+
+        <Route path="/editMovie/:id" exact>
+          <MovieEditForm />
         </Route>
         
       </Router>
