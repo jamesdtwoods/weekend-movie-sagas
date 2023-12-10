@@ -87,16 +87,6 @@ const movies = (state = [], action) => {
   }
 }
 
-// Used to store movie details returned from the server
-const movieToView = (state = 0, action) => {
-  switch (action.type) {
-    case 'SET_MOVIE_TO_VIEW':
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
 // Used to store the movie to view genre
 const genreOfMovieToView = (state = [], action) => {
   switch (action.type) {
@@ -122,7 +112,6 @@ const storeInstance = createStore(
   combineReducers({
     movies,
     genres,
-    movieToView,
     genreOfMovieToView,
   }),
   // Add sagaMiddleware to our store
