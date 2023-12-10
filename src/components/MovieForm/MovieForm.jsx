@@ -45,34 +45,41 @@ function MovieForm () {
 
     return(
         <div>
+            <>Title: </>
             <input
                 onChange={(e) => setTitleInput(e.target.value)}
                 value={titleInput}
                 type='text'
                 placeholder='Title'
             />
+            <br /><br />
+            <>Poster: </>
             <input
                 onChange={(e) => setPosterInput(e.target.value)}
                 value={posterInput}
                 type='text'
                 placeholder='Poster URL'
             />
-            <input
+            <br /><br />
+            <textarea
                 onChange={(e) => setDescriptionInput(e.target.value)}
-                value={descriptionInput}
-                type='textarea'
+                name={descriptionInput}
+                id='description_input'
                 placeholder='Description'
+                rows="4"
+                cols="50"
             />
-            <br />
-
+            <br /><br />
+            <>Genre: </>
             <select name="genre"
                 onChange={(e) => setGenre(e.target.value)}
                 defaultValue=''>
+                <option value=''></option>
                 {genres.map(genre => {
                     return <option key={genre.id} value={genre.id}>{genre.name}</option>
                 })}
             </select>
-            
+            <br /><br />
             <Button 
             size="small" 
             onClick={handleSubmit}
