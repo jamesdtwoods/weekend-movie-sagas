@@ -14,10 +14,10 @@ function MovieItem ({movie}) {
     const dispatch = useDispatch();
 
     const history = useHistory()
-    const toMovieDetails = () => {
+    const movieToView = () => {
         console.log('movie.id:', movie.id)
         dispatch({
-            type: 'SAGA/FETCH_MOVIE_DETAILS',
+            type: 'SET_MOVIE_TO_VIEW',
             payload: movie.id
         })
         history.push(`/movieDetails/`)
@@ -40,7 +40,7 @@ function MovieItem ({movie}) {
           <CardActions>
             <Button 
             size="small" 
-            onClick={toMovieDetails}
+            onClick={movieToView}
             >Learn More</Button>
           </CardActions>
         </Card>

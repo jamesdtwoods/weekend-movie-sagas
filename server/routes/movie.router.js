@@ -19,11 +19,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  console.log('req.params.id:', req.params.id);
   const queryValues = [req.params.id]
   const query = `
-    SELECT * FROM "movies"
-      WHERE "id" = $1;
+  SELECT genres.name as genre
+    FROM movies_genres
+    INNER JOIN movies
+      ON movies.id = movies_genres.movie_id
+    INNER JOIN genres
+      ON genres.id = movies_genres.genre_id
+    WHERE movies.id = $1;
   `;
   pool.query(query, queryValues)
     .then(result => {
