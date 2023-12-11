@@ -1,11 +1,11 @@
 
-# Full Stack Feedback
+# Weekend Movie Sagas
 
 ## Description
 
 _Duration: one weekend_
 
-This was my first solo full stack CRUD web app using redux to handle state and Material UI for styling. It's also my first time hosting something, [check it out!](https://lit-ridge-30420-4b7e6abf41cc.herokuapp.com/#/)
+This was my first web app using saga functions to handle transfer requests. 
 
 ## Screen Shot
 
@@ -25,6 +25,7 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 - react-router-dom
 - react-scripts
 - redux-logger
+- redux-saga
 - [Material UI](https://mui.com/material-ui/getting-started/) - or your styling library of choice
 
 
@@ -39,16 +40,15 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ## Usage
 
-1. Using the provided inputs enter your feedback 
-2. Pressing the "next" buttons adds your input to your entry
-3. Users will have the option to go back and re-enter thier inputs
-4. Admins should navigate to the `/admin` url inorder to view the administrator page
-    - Admins will be able to delete feedback or flag it for review
+1. Users can view additional movie details by clicking on the "Learn More" button 
+2. Users can edit movie details and return to the movie list by clicking on the buttons on the page
+3. Users can also add a new movie from the list view
 
 ## Future goals
-* Further Material UI styling - especially admin table
-* Once I've learned how to handle logins this could be added to the app 
-* Adding modals for pop-up warnings instead of using `.alert()`
+* Further Material UI styling
+* Allowing users to edit genres on the edit movie page
+* Allowing users to add multiple genres on the new movie page
+* Search functionality for title and genre
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) (especially all the chefs in the Moonstone cohort and our most patient and thoughful instructor Matt) who gave me the tools and confidence to make this application a reality.
