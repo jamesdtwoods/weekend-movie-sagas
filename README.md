@@ -9,7 +9,10 @@ This was my first web app using saga functions to handle transfer requests.
 
 ## Screen Shot
 
-Include one or two screen shots of your project here (optional). Remove if unused.
+<img width="1470" alt="Screenshot 2024-01-13 at 2 15 26 PM" src="https://github.com/jamesdtwoods/weekend-movie-sagas/assets/142618619/76e78e32-a748-479c-a028-cc9148244913">
+<img width="1470" alt="Screenshot 2024-01-13 at 2 15 44 PM" src="https://github.com/jamesdtwoods/weekend-movie-sagas/assets/142618619/57ff06ed-9aea-428e-bcf5-12231a12a586">
+<img width="1470" alt="Screenshot 2024-01-13 at 2 15 34 PM" src="https://github.com/jamesdtwoods/weekend-movie-sagas/assets/142618619/96321062-1834-44a7-8d05-e47fb7d4ffa8">
+
 
 ### Prerequisites
 
